@@ -12,7 +12,7 @@ def driver():
     options.add_argument('--disable-geolocation')
     options.add_argument('--disable-notifications')
     options.add_argument('--window-size=1920,1080')
-    with webdriver.Chrome(options) as driver:
+    with webdriver.Chrome(options=options) as driver:
         yield driver
 
 
