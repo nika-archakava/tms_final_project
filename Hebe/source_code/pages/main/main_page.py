@@ -57,6 +57,5 @@ class MainPage(BasePage):
 
     @allure.step('Minimize pop-up window on the main page')
     def minimize_pop_up_window(self):
-        minimize_pup_up_window = self.pop_up_window.assert_element(clickable=True)
-        if minimize_pup_up_window:
+        if self.pop_up_window.assert_element(clickable=True):
             self.pop_up_window.click()
