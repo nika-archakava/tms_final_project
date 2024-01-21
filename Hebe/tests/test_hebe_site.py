@@ -220,7 +220,6 @@ class TestHebeSite:
         cart_page = CartPage(driver)
         base_helpers = BaseHelpers()
         main_page.accept_cookies()
-        main_page.minimize_pop_up_window()
         with allure.step('Go to authorization page'):
             main_page.registration_icon.click()
         user_email, user_password = base_helpers.load_credentials()
@@ -242,7 +241,6 @@ class TestHebeSite:
         cart_page = CartPage(driver)
         base_helpers = BaseHelpers()
         main_page.accept_cookies()
-        main_page.minimize_pop_up_window()
         with allure.step('Go to authorization page'):
             main_page.registration_icon.click()
         user_email, user_password = base_helpers.load_credentials()
@@ -268,7 +266,6 @@ class TestHebeSite:
         cart_page = CartPage(driver)
         base_helpers = BaseHelpers()
         main_page.accept_cookies()
-        main_page.minimize_pop_up_window()
         with allure.step('Go to authorization page'):
             main_page.registration_icon.click()
         user_email, user_password = base_helpers.load_credentials()
