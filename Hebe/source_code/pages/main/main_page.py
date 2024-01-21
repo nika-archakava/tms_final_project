@@ -28,8 +28,7 @@ class MainPage(BasePage):
 
     @allure.step('Accept cookies')
     def accept_cookies(self):
-        accept_cookies_button = self.accept_cookies_button.assert_element(clickable=True)
-        if accept_cookies_button:
+        if self.accept_cookies_button.assert_element(clickable=True):
             self.accept_cookies_button.click()
 
     @allure.step('Find product by search string')
