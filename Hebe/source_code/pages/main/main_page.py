@@ -13,6 +13,7 @@ class MainPage(BasePage):
         self.search_string = BaseElement(driver, "//*[@id='q']")
         self.search_results = BaseElement(driver, "//*[@class='product-tile__name']")
         self.registration_icon = BaseElement(driver, "//*[@href='https://www.hebe.pl/account']")
+        self.log_out_button = BaseElement(driver, "//*[@title='Wyloguj się']")
         self.create_account_button = BaseElement(driver, "//*[@title='Załóż konto']")
         self.no_hebe_card_button = BaseElement(driver, "//*[@title='nie mam karty My Hebe']")
         self.first_product = BaseElement(driver, "(//*[@class='product-tile   js-product-tile  '])[1]")
@@ -59,3 +60,10 @@ class MainPage(BasePage):
     def minimize_pop_up_window(self):
         if self.pop_up_window.assert_element(clickable=True):
             self.pop_up_window.click()
+
+    @allure.step('Log out user from account')
+    def log_out_from_account(self):
+        self.registration_icon.hover()
+        self.log_out_button.click()
+
+

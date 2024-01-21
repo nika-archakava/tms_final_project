@@ -1,6 +1,7 @@
+from time import sleep
+
 import pytest
 import allure
-
 
 from Hebe.source_code.pages.authorization.authorization_page import AuthorizationPage
 from Hebe.source_code.pages.base_helpers import BaseHelpers
@@ -141,6 +142,21 @@ class TestHebeSite:
         authorization_page.make_authorization(user_login, user_password)
         with allure.step('Ensure that error message is displayed'):
             assert authorization_page.error_message.text() == 'Login lub hasło nie zostało rozpoznane. Spróbuj ponownie.'
+
+    @allure.feature('Authorization')
+    @allure.story('Log out user from account')
+    def test_log_out(self, driver):
+        main_page = MainPage(driver)
+        authorization_page = AuthorizationPage(driver)
+        base_helpers = BaseHelpers()
+        main_page.accept_cookies()
+        with allure.step('Go to authorization window'):
+            main_page.registration_icon.click()
+        user_email, user_password = base_helpers.load_credentials()
+        authorization_page.make_authorization(user_email, user_password)
+        main_page.log_out_from_account()
+        with allure.step('Ensure that redirection to the main page is performed'):
+            assert main_page.driver.title == 'Sklep internetowy Hebe.pl - Zdrowie i Piękno'
 
     @allure.feature('Favorites')
     @allure.story('Add product to favorites')
